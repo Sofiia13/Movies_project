@@ -1,0 +1,95 @@
+@import "https://unpkg.com/open-props";
+@import "https://unpkg.com/open-props/normalize.min.css";
+
+
+.scrolling-btns {
+    display: flex;
+    align-items: center;
+    /*color: black;*/
+    position: relative;
+    object-fit: contain;
+    /*justify-content: center;*/
+    /*margin: 10% auto;*/
+}
+
+ #backBtn, #nextBtn, #backBtn1, #nextBtn1, #backBtn2, #nextBtn2 {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+    /*margin: 10px;*/
+    object-fit: contain;
+    padding: 10px;
+}
+
+ #backBtn3, #nextBtn3,  #backBtn4, #nextBtn4 {
+     width: 50px;
+     height: 50px;
+     position: absolute;
+     border-radius: 50%;
+     background: black;
+     cursor: pointer;
+     /*margin: 10px;*!*/
+     object-fit: contain;
+     padding: 10px;
+ }
+
+.scrolling-btns #backBtn, #backBtn1, #backBtn2, #backBtn3 {
+    left: 0;
+    top: 50%;
+    z-index: 2;
+    position: absolute;
+    opacity: 0.6;
+    transform: translate(50%, -50%);
+}
+
+.scrolling-btns #backBtn4 {
+    left: 0;
+    top: 50%;
+    z-index: 2;
+    position: absolute;
+    opacity: 0.6;
+    transform: translate(50%, -50%);
+}
+
+.scrolling-btns #nextBtn, #nextBtn1, #nextBtn2, #nextBtn3 {
+    right: 0;
+    top: 50%;
+    z-index: 2;
+    opacity: 0.6;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.scrolling-btns #nextBtn4 {
+    right: 0;
+    top: 50%;
+    z-index: 2;
+    opacity: 0.6;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.popular, .action, .crime, .cartoons, .drama {
+    display: grid;
+    grid-gap: 1px;
+    grid-auto-flow: column;
+    grid-auto-columns: 24%;
+    margin-bottom: 20px;
+
+    overflow-x: hidden;
+    overscroll-behavior-inline: contain;
+}
+
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: 1px;
+}
+
+.snaps-inline > * {
+    scroll-snap-align: start;
+}
+

@@ -1,0 +1,150 @@
+
+<html>
+  <header>
+    <script src="https://cdn.tailwindcss.com"></script><link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+      <nav
+    class="relative flex w-full items-center justify-between bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start"
+    data-te-navbar-ref>
+    <div class="flex w-full flex-wrap items-center justify-between px-3">
+      <div class="flex items-center">
+        <!-- Hamburger menu button -->
+        <button
+          class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
+          type="button"
+          data-te-collapse-init
+          data-te-target="#navbarSupportedContentY"
+          aria-controls="navbarSupportedContentY"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <!-- Hamburger menu icon -->
+          <span class="[&>svg]:w-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-7 w-7">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Navigation links -->
+      <div
+        class="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto"
+        id="navbarSupportedContentY"
+        data-te-collapse-item>
+        <ul
+          class="mr-auto flex flex-col lg:flex-row"
+          data-te-navbar-nav-ref>
+          <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+            <a
+              class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
+              href="#!"
+              data-te-nav-link-ref
+              data-te-ripple-init
+              data-te-ripple-color="light"
+              >Home</a
+            >
+          </li>
+          <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+            <a
+              class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
+              href="#!"
+              data-te-nav-link-ref
+              data-te-ripple-init
+              data-te-ripple-color="light"
+              >Features</a
+            >
+          </li>
+          <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+            <a
+              class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
+              href="#!"
+              data-te-nav-link-ref
+              data-te-ripple-init
+              data-te-ripple-color="light"
+              >Pricing</a
+            >
+          </li>
+          <li class="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+            <a
+              class="block transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 disabled:text-black/30 dark:hover:text-white dark:focus:text-white lg:p-2 [&.active]:text-black/90"
+              href="#!"
+              data-te-nav-link-ref
+              data-te-ripple-init
+              data-te-ripple-color="light"
+              >About</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <h1 class="text-3xl font-bold text-sky-900 m-2">Популярні</h1>
+  </header>
+  <body>
+
+{#    <div class="relative min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">#}
+{#        <h1 class="text-3xl font-bold text-blue-500">Популярні</h1>#}
+<div class="popular">
+{#    <div class="flex flex-nowrap -mx-3">#}
+
+  {% for movie in movies %}
+
+<div class="flex w-full max-w-sm mx-0.5 my-1">
+{#      <div class="h-full bg-black shadow-md rounded-lg overflow-hidden">#}
+
+
+
+<div class="overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card" data-movie-id="438631">
+    <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
+    <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info" data-lity="">
+        <div class="poster__info align-self-end w-full">
+            <div class="h-32"></div>
+            <div class="space-y-6 detail_info">
+                <div class="flex flex-col space-y-2 inner">
+                    <h3 class="text-2xl font-bold text-white" data-unsp-sanitized="clean">{{ movie.title }}</h3>
+
+                </div>
+                <div class="flex flex-row justify-between datos">
+                    <div class="flex flex-col datos_col">
+                        <div class="popularity">{{ movie.popularity }}</div>
+                        <div class="text-sm text-gray-400">Популярність:</div>
+                    </div>
+                    <div class="flex flex-col datos_col">
+                        <div class="release">{{ movie.release_date }}</div>
+                        <div class="text-sm text-gray-400">Дата входу:</div>
+                    </div>
+                    <div class="flex flex-col datos_col">
+                        <div class="release">{{ movie.vote_average }}</div>
+                        <div class="text-sm text-gray-400">Рейтинг:</div>
+                    </div>
+                </div>
+                <div class="flex flex-col overview">
+                    <div class="flex flex-col"></div>
+                    <div class="text-xs text-gray-400 mb-2">Опис:</div>
+                    <p class="text-xs text-gray-100 mb-6"> {{ movie.overview }}</p>
+                </div>
+            </div>
+{#            <div data-countdown="2021-09-15" class="absolute inset-x-0 top-0 pt-5 w-full mx-auto text-2xl uppercase text-center drop-shadow-sm font-bold text-white">00 Days 00:00:00</div>#}
+        </div>
+    </div>
+    <img class="absolute inset-0 transform w-full -translate-y-4" src="https://image.tmdb.org/t/p/w342/{{ movie.poster_path }}" style="filter: grayscale(0);" />
+    <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10"></div>
+</div>
+
+    </div>
+</div>
+         {% endfor %}
+    </div>
+</div>
+  </div>
+  </body>
+</html>
