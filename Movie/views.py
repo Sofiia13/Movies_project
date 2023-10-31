@@ -5,6 +5,7 @@ from django.http import JsonResponse
 import random
 import json
 
+
 def list(request):
     popularity_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&sort_by=popularity.desc"
     genres_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
@@ -30,38 +31,45 @@ def list(request):
     for movie_data in movies_data:
         date = datetime.strptime(movie_data['release_date'], "%Y-%m-%d")
         formatted_date = date.strftime("%d.%m.%Y")
-        movies.append({'title': movie_data['title'], 'poster_path': movie_data['poster_path'], 'popularity': movie_data['popularity'], 'release_date': formatted_date, 'vote_average': movie_data['vote_average'], 'overview': movie_data['overview']})
+        movies.append({'title': movie_data['title'], 'poster_path': movie_data['poster_path'],
+                       'popularity': movie_data['popularity'], 'release_date': formatted_date,
+                       'vote_average': movie_data['vote_average'], 'overview': movie_data['overview']})
 
     # for id_data in ids_data:
     #     all_genres_id.append({'id': id_data['id'], 'name': id_data['name']})
-
 
     for genre_item in genres_data:
         date = datetime.strptime(genre_item['release_date'], "%Y-%m-%d")
         formatted_date = date.strftime("%d.%m.%Y")
         if 28 in genre_item['genre_ids']:
-
             action.append({'title': genre_item['title'], 'poster_path': genre_item['poster_path'],
-            'popularity': genre_item['popularity'], 'release_date': formatted_date,
-            'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'], 'genres': genre_item['genre_ids']})
+                           'popularity': genre_item['popularity'], 'release_date': formatted_date,
+                           'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
+                           'genres': genre_item['genre_ids']})
 
         if 80 in genre_item['genre_ids']:
             crime.append({'title': genre_item['title'], 'poster_path': genre_item['poster_path'],
-                           'popularity': genre_item['popularity'], 'release_date': formatted_date,
-                           'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
-                           'genres': genre_item['genre_ids']})
+                          'popularity': genre_item['popularity'], 'release_date': formatted_date,
+                          'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
+                          'genres': genre_item['genre_ids']})
 
         if 16 in genre_item['genre_ids']:
             cartoons.append({'title': genre_item['title'], 'poster_path': genre_item['poster_path'],
-                           'popularity': genre_item['popularity'], 'release_date': formatted_date,
-                           'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
-                           'genres': genre_item['genre_ids']})
+                             'popularity': genre_item['popularity'], 'release_date': formatted_date,
+                             'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
+                             'genres': genre_item['genre_ids']})
 
         if 18 in genre_item['genre_ids']:
             drama.append({'title': genre_item['title'], 'poster_path': genre_item['poster_path'],
-                           'popularity': genre_item['popularity'], 'release_date': formatted_date,
-                           'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
-                           'genres': genre_item['genre_ids']})
+                          'popularity': genre_item['popularity'], 'release_date': formatted_date,
+                          'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
+                          'genres': genre_item['genre_ids']})
+
+    movies_with_title = {'items': movies, 'title': 'Популярні'}
+    action_with_title = {'items': action, 'title': 'Бойовик'}
+    crime_with_title = {'items': crime, 'title': 'Кримінал'}
+    cartoons_with_title = {'items': cartoons, 'title': 'Мультики'}
+    drama_with_title = {'items': drama, 'title': 'Драма'}
 
     context = {
         'movies': movies,
@@ -70,9 +78,9 @@ def list(request):
         'crime': crime,
         'cartoons': cartoons,
         'drama': drama,
+        'carousels': [movies_with_title, action_with_title, crime_with_title, cartoons_with_title, drama_with_title]
     }
     return render(request, 'show.html', context)
-
 
 # def action(request):
 #
@@ -133,5 +141,3 @@ def list(request):
 #         'list_of_genges': list_of_genges,
 #     }
 #     return render(request, 'genre.html', context)
-
-
