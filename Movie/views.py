@@ -7,8 +7,8 @@ import json
 
 
 def list(request):
-    popularity_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&sort_by=popularity.desc"
-    genres_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
+    popularity_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc"
+    genres_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
     all_genres_id_url = "https://api.themoviedb.org/3/genre/movie/list?language=uk"
 
     headers = {
@@ -82,6 +82,32 @@ def list(request):
     }
     return render(request, 'show.html', context)
 
+def search(request):
+    query = request.GET.get('query', '')
+    api_key = 'cb72815d16c0c2f93f5abc32a69d716c'
+
+    url = f'https://api.themoviedb.org/3/search/movie?query={query}&api_key={api_key}&language=uk-UA'
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        films_data = response.json()['results']
+        films = []
+        for film_data in films_data:
+            date = datetime.strptime(film_data['release_date'], "%Y-%m-%d")
+            formatted_date = date.strftime("%d.%m.%Y")
+            films.append({'title': film_data['title'], 'poster_path': film_data['poster_path'],
+                           'popularity': film_data['popularity'], 'release_date': formatted_date,
+                           'vote_average': film_data['vote_average'], 'overview': film_data['overview']})
+        context = {
+            'films': films,
+            'query': query
+        }
+
+        return render(request, 'search.html', context)
+    # else:
+    #     error_message = "No query provided"
+    #     return render(request, 'movies/error.html', {'error_message': error_message})
 # def action(request):
 #
 #     genres_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=2&sort_by=popularity.desc&with_genres=Action"

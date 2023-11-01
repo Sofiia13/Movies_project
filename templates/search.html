@@ -2,11 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Movies</title>
+    <meta charset="UTF-8">
 </head>
 <header>
     <nav
@@ -163,7 +162,36 @@
                                         >Laboriosam</a
                                         >
                                     </div>
-
+                                    <div>
+                                        <p
+                                                class="block w-full border-b border-neutral-200 px-6 py-2 font-semibold uppercase text-neutral-700 dark:border-neutral-500 dark:text-white">
+                                            Cras justo odio
+                                        </p>
+                                        <a
+                                                href="#!"
+                                                aria-current="true"
+                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                        >Saepe</a
+                                        >
+                                        <a
+                                                href="#!"
+                                                aria-current="true"
+                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                        >Vel alias</a
+                                        >
+                                        <a
+                                                href="#!"
+                                                aria-current="true"
+                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                        >Sunt doloribus</a
+                                        >
+                                        <a
+                                                href="#!"
+                                                aria-current="true"
+                                                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                        >Cum dolores</a
+                                        >
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -185,17 +213,21 @@
 </header>
 <body>
 <div style="position: relative;">
-    <img src="{% static 'images/banner_blue_small.png' %}" class="img-fluid" alt="" width="100%" style="vertical-align: middle; margin-bottom: 50px">
+    <img src="{% static 'images/banner_blue_small.png' %}" class="img-fluid" alt="" width="100%"
+         style="vertical-align: middle; margin-bottom: 50px">
     <form id="searchForm" action="/search/" method="get">
-        <div class="mb-3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
-            <input id="searchInput" type="search" class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary" style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Search" aria-label="Search" aria-describedby="button-addon1"/>
-            <button
-                    class="bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
-                    type="submit"
-                    id="button-addon1"
-                    data-te-ripple-init data-te-ripple-color="light">
+        <div class="mb-3"
+             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
+            <input id="searchInput" type="search"
+                   class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                   style="width: 700px; height: 50px; cursor: auto" placeholder="Search" aria-label="Search"
+                   aria-describedby="button-addon1"/>
+            <button class="bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                    type="submit" id="button-addon1" data-te-ripple-init data-te-ripple-color="light">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-8 w-5">
-                    <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd"
+                          d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                          clip-rule="evenodd"/>
                 </svg>
             </button>
         </div>
@@ -216,92 +248,88 @@
     });
 </script>
 
+
 <div>
-    {% for carousel in carousels %}
-        <h1 id="myHeading_{{ forloop.counter }}" class="text-3xl font-bold text-sky-900 m-8">{{ carousel.title }}</h1>
-        <div class="flex items-center relative object-contain carousel-container">
-        {% if carousel.items|length > 4 %}
-            <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
-                 src="{% static 'images/img1_left_pointer.png' %}">
-        {% endif %}
-            <div class="popular snaps-inline w-full px-2">
+    <h1 class="text-3xl font-bold text-sky-900 m-2">Результати пошуку:</h1>
+    <div class="flex items-center relative object-contain carousel-container">
+        <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
+             src="{% static 'images/img1_left_pointer.png' %}">
 
-                {% for movie in carousel.items %}
+        <div class="popular snaps-inline">
 
-                    <div class="flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
+            {% for f in films %}
 
-                        <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
-                             data-movie-id="438631">
-                            <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
-                            <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
-                                 data-lity="">
-                                <div class="poster__info align-self-end w-full">
-                                    <div class="h-32"></div>
-                                    <div class="space-y-6 detail_info">
-                                        <div class="flex flex-col space-y-2 inner">
+                <div class='flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
 
-                                            <h3 class="text-2xl font-bold text-white"
-                                                data-unsp-sanitized="clean">{{ movie.title }}</h3>
+                    <div class="overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
+                         data-movie-id="438631">
+                        <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
+                        <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info" data-lity="">
+                            <div class="poster__info align-self-end w-full">
+                                <div class="h-32"></div>
+                                <div class="space-y-6 detail_info">
+                                    <div class="flex flex-col space-y-2 inner">
+
+                                        <h3 class="text-2xl font-bold text-white"
+                                            data-unsp-sanitized="clean">{{ f.title }}</h3>
+                                        <div class="mb-0 text-lg text-gray-400">Beyond fear, destiny awaits.</div>
+                                    </div>
+                                    <div class="flex flex-row justify-between datos">
+                                        <div class="flex flex-col datos_col">
+                                            <div class="popularity">{{ f.popularity }}</div>
+                                            <div class="text-sm text-gray-400">Популярність:</div>
                                         </div>
-                                        <div class="flex flex-row justify-between datos">
-                                            <div class="flex flex-col datos_col">
-                                                <div class="popularity">{{ movie.popularity }}</div>
-                                                <div class="text-sm text-gray-400">Популярність:</div>
-                                            </div>
-                                            <div class="flex flex-col datos_col">
-                                                <div class="release">{{ movie.release_date }}</div>
-                                                <div class="text-sm text-gray-400">Дата виходу:</div>
-                                            </div>
-                                            <div class="flex flex-col datos_col">
-                                                <div class="release">{{ movie.vote_average }}</div>
-                                                <div class="text-sm text-gray-400">Рейтинг:</div>
-                                            </div>
+                                        <div class="flex flex-col datos_col">
+                                            <div class="release">{{ f.release_date }}</div>
+                                            <div class="text-sm text-gray-400">Дата виходу:</div>
                                         </div>
-                                        <div class="flex flex-col overview">
-                                            <div class="flex flex-col"></div>
-                                            <div class="text-xs text-gray-400 mb-2">Опис:</div>
-                                            <p class="text-xs text-gray-100 mb-6">{{ movie.overview }}</p>
+                                        <div class="flex flex-col datos_col">
+                                            <div class="release">{{ f.vote_average }}</div>
+                                            <div class="text-sm text-gray-400">Рейтинг:</div>
                                         </div>
+                                    </div>
+                                    <div class="flex flex-col overview">
+                                        <div class="flex flex-col"></div>
+                                        <div class="text-xs text-gray-400 mb-2">Опис:</div>
+                                        <p class="text-xs text-gray-100 mb-6">{{ f.overview }}</p>
                                     </div>
                                 </div>
                             </div>
-                            <img class="absolute inset-0 transform w-full -translate-y-4"
-                                 src="https://image.tmdb.org/t/p/w342/{{ movie.poster_path }}"
-                                 style="filter: grayscale(0);"/>
-                            <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10"></div>
-
-
                         </div>
-                    </div>
-                {% endfor %}
+                        <img class="absolute inset-0 transform w-full -translate-y-4"
+                             src="https://image.tmdb.org/t/p/w342/{{ f.poster_path }}" style="filter: grayscale(0);"/>
+                        <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10"></div>
 
-            </div>
-            {% if carousel.items|length > 4 %}
-                <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain nextBtn"
-                    src="{% static 'images/img2_right_pointer.png' %}">
-            {% endif %}
+
+                    </div>
+                </div>
+            {% endfor %}
+
         </div>
-    {% endfor %}
+        <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain nextBtn"
+             src="{% static 'images/img2_right_pointer.png' %}">
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const carouselContainers = document.querySelectorAll('.carousel-container');
+                carouselContainers.forEach((element) => {
+                    const btnNext = element.getElementsByClassName('nextBtn')[0];
+
+                    const scrollableElement = element.querySelector('.popular');
+
+                    btnNext.addEventListener('click', () => {
+                        scrollableElement.scrollBy({left: 1500, behavior: 'smooth'})
+                    });
+
+                    const btnBack = element.getElementsByClassName('backBtn')[0];
+                    btnBack.addEventListener('click', () => {
+                        scrollableElement.scrollBy({left: -1500, behavior: 'smooth'})
+                    });
+                })
+            });
+        </script>
+    </div>
+
 </div>
 
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const carouselContainers = document.querySelectorAll('.carousel-container');
-        carouselContainers.forEach((element) => {
-            const btnNext = element.getElementsByClassName('nextBtn')[0];
-
-            const scrollableElement = element.querySelector('.popular');
-
-            btnNext.addEventListener('click', () => {
-                scrollableElement.scrollBy({left: 1500, behavior: 'smooth'})
-            });
-
-            const btnBack = element.getElementsByClassName('backBtn')[0];
-            btnBack.addEventListener('click', () => {
-                scrollableElement.scrollBy({left: -1500, behavior: 'smooth'})
-            });
-        })
-    });
-</script>
 </body>
 </html>
