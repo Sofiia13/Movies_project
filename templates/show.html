@@ -9,18 +9,19 @@
     <title>Movies</title>
 </head>
 <header>
-    <nav
-            class="relative flex w-full items-center justify-between bg-neutral-50 py-2 text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-300 dark:shadow-black/5 lg:flex-wrap lg:justify-start"
-            data-te-navbar-ref>
-        <div class="px-6">
-            <button
-                    class="border-0 bg-transparent py-3 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
-                    type="button"
-                    data-te-collapse-init
-                    data-te-target="#navbarSupportedContentY"
-                    aria-controls="navbarSupportedContentY"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
+    {% if selected_language_code == 'uk-UA' %}
+        <nav
+                class="relative flex w-full items-center justify-between bg-neutral-50 py-2 text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-300 dark:shadow-black/5 lg:flex-wrap lg:justify-start"
+                data-te-navbar-ref>
+            <div class="px-6">
+                <button
+                        class="border-0 bg-transparent py-3 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
+                        type="button"
+                        data-te-collapse-init
+                        data-te-target="#navbarSupportedContentY"
+                        aria-controls="navbarSupportedContentY"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
       <span class="[&>svg]:w-8">
         <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -35,34 +36,35 @@
                   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
         </svg>
       </span>
-            </button>
-            <div
-                    class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
-                    id="navbarSupportedContentY"
-                    data-te-collapse-item>
-                <ul class="mr-auto flex flex-row" data-te-navbar-nav-ref>
-                    <li data-te-nav-item-ref>
-                        <a
-                                class="block py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
-                                href="{% url 'list' %}"
-                                data-te-ripple-init
-                                data-te-ripple-color="light"
-                        >Home</a
-                        >
-                    </li>
-                    <li class="static" data-te-nav-item-ref data-te-dropdown-ref>
-                        <a
-                                class="flex items-center whitespace-nowrap py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
-                                href="#"
-                                data-te-ripple-init
-                                data-te-ripple-color="light"
-                                type="button"
-                                id="dropdownMenuButtonX"
-                                data-te-dropdown-toggle-ref
-                                aria-expanded="false"
-                                data-te-nav-link-ref
-                        >Categories
-                            <span class="ml-2 w-2">
+                </button>
+                <div
+                        class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+                        id="navbarSupportedContentY"
+                        data-te-collapse-item>
+                    <ul class="mr-auto flex flex-row" data-te-navbar-nav-ref>
+                        <li data-te-nav-item-ref>
+                            <a
+                                    class="block py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    href="{% url 'show' %}"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light"
+                            >Home</a
+                            >
+                        </li>
+
+                        <li class="static" data-te-nav-item-ref data-te-dropdown-ref>
+                            <a
+                                    class="flex items-center whitespace-nowrap py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    href="#"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light"
+                                    type="button"
+                                    id="dropdownMenuButtonX"
+                                    data-te-dropdown-toggle-ref
+                                    aria-expanded="false"
+                                    data-te-nav-link-ref
+                            >Категорії
+                                <span class="ml-2 w-2">
               <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -74,104 +76,242 @@
                         clip-rule="evenodd"/>
               </svg>
             </span>
-                        </a>
-                        <div
-                                class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block"
-                                aria-labelledby="dropdownMenuButtonY"
-                                data-te-dropdown-menu-ref>
-                            <div class="px-6 py-5 lg:px-8">
-                                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                                    <div>
-                                        <a
-                                                href="{% url 'list' %}#myHeading_1"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Популярне</a
-                                        >
-                                        <a
-                                                href="{% url 'list' %}#myHeading_2"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Бойовик</a
-                                        >
-                                        <a
-                                                href="{% url 'list' %}#myHeading_3"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Кримінал</a
-                                        >
-                                        <a
-                                                href="{% url 'list' %}#myHeading_4"
-                                                aria-current="true"
-                                                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Мультики</a
-                                        >
-                                    </div>
-                                    <div>
-                                        <a
-                                                href="{% url 'list' %}#myHeading_5"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Драма</a
-                                        >
-                                        <a
-                                                href="#!"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Cras justo odio</a
-                                        >
-                                        <a
-                                                href="#!"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Laudantium maiores</a
-                                        >
-                                        <a
-                                                href="#!"
-                                                aria-current="true"
-                                                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Provident dolor</a
-                                        >
-                                    </div>
-                                    <div>
-                                        <p
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 font-semibold uppercase text-neutral-700 dark:border-neutral-500 dark:text-white">
-                                            Iste quaerato
-                                        </p>
-                                        <a
-                                                href="#!"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Cras justo odio</a
-                                        >
-                                        <a
-                                                href="#!"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Est iure</a
-                                        >
-                                        <a
-                                                href="#!"
-                                                aria-current="true"
-                                                class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Praesentium</a
-                                        >
-                                        <a
-                                                href="#!"
-                                                aria-current="true"
-                                                class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                        >Laboriosam</a
-                                        >
-                                    </div>
+                            </a>
 
+                            <div
+                                    class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block"
+                                    aria-labelledby="dropdownMenuButtonY"
+                                    data-te-dropdown-menu-ref>
+                                <div class="px-6 py-5 lg:px-8">
+                                    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                                        <div>
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_1"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Популярне</a
+                                            >
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_2"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Бойовик</a
+                                            >
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_3"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Кримінал</a
+                                            >
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_4"
+                                                    aria-current="true"
+                                                    class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Мультики</a
+                                            >
+                                        </div>
+                                        <div>
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_5"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Драма</a
+                                            >
+
+
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="language" value="uk-UA"
+                        class="bg-blue-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    UA
+                </button>
+                <button type="submit" name="language" value="en-US"
+                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    US
+                </button>
+            </form>
+
+            {% if request.user.username == '' %}
+                <div class="flex justify-end grow">
+                    <a href="{% url 'register' %}"
+                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
+                        Зареєструватися
+                    </a>
+                    <a href="{% url 'login' %}"
+                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
+                        Увійти
+                    </a>
+                </div>
+            {% else %}
+                <div class="flex justify-end grow">
+                    <span class="text-lg text-black mr-4">Привіт, {{ request.user }}</span>
+                    <span class="text-lg text-black mr-4"><a href="{% url 'logout' %}">Вийти</a></span>
+                </div>
+            {% endif %}
+
+
+        </nav>
+    {% else %}
+        <nav
+                class="relative flex w-full items-center justify-between bg-neutral-50 py-2 text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-300 dark:shadow-black/5 lg:flex-wrap lg:justify-start"
+                data-te-navbar-ref>
+            <div class="px-6">
+                <button
+                        class="border-0 bg-transparent py-3 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
+                        type="button"
+                        data-te-collapse-init
+                        data-te-target="#navbarSupportedContentY"
+                        aria-controls="navbarSupportedContentY"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+      <span class="[&>svg]:w-8">
+        <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-8 w-8">
+          <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+        </svg>
+      </span>
+                </button>
+                <div
+                        class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
+                        id="navbarSupportedContentY"
+                        data-te-collapse-item>
+                    <ul class="mr-auto flex flex-row" data-te-navbar-nav-ref>
+                        <li data-te-nav-item-ref>
+                            <a
+                                    class="block py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    href="{% url 'show' %}"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light"
+                            >Home</a
+                            >
+                        </li>
+
+                        <li class="static" data-te-nav-item-ref data-te-dropdown-ref>
+                            <a
+                                    class="flex items-center whitespace-nowrap py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    href="#"
+                                    data-te-ripple-init
+                                    data-te-ripple-color="light"
+                                    type="button"
+                                    id="dropdownMenuButtonX"
+                                    data-te-dropdown-toggle-ref
+                                    aria-expanded="false"
+                                    data-te-nav-link-ref
+                            >Categories
+                                <span class="ml-2 w-2">
+              <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      class="h-5 w-5">
+                <path
+                        fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd"/>
+              </svg>
+            </span>
+                            </a>
+
+                            <div
+                                    class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block"
+                                    aria-labelledby="dropdownMenuButtonY"
+                                    data-te-dropdown-menu-ref>
+                                <div class="px-6 py-5 lg:px-8">
+                                    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                                        <div>
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_1"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Popular</a
+                                            >
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_2"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Action</a
+                                            >
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_3"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Crime</a
+                                            >
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_4"
+                                                    aria-current="true"
+                                                    class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Cartoons</a
+                                            >
+                                        </div>
+                                        <div>
+                                            <a
+                                                    href="{% url 'show' %}#myHeading_5"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Drama</a
+                                            >
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="language" value="uk-UA"
+                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    UA
+                </button>
+                <button type="submit" name="language" value="en-US"
+                        class="bg-blue-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    US
+                </button>
+            </form>
+
+            {% if request.user.username == '' %}
+                <div class="flex justify-end grow">
+                    <a href="{% url 'register' %}"
+                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
+                        Sign up
+                    </a>
+                    <a href="{% url 'login' %}"
+                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
+                        Sign in
+                    </a>
+                </div>
+            {% else %}
+                <div class="flex justify-end grow">
+                    <span class="text-lg text-black mr-4">Hello, {{ request.user }}</span>
+                    <span class="text-lg text-black mr-4"><a href="{% url 'logout' %}">Logout</a></span>
+                </div>
+            {% endif %}
+
+
+        </nav>
+    {% endif %}
     <script>
         const dropdownButton = document.getElementById('dropdownMenuButtonX');
         const dropdownMenu = document.querySelector('[data-te-dropdown-menu-ref]');
@@ -185,17 +325,24 @@
 </header>
 <body>
 <div style="position: relative;">
-    <img src="{% static 'images/banner_blue_small.png' %}" class="img-fluid" alt="" width="100%" style="vertical-align: middle; margin-bottom: 50px">
+    <img src="{% static 'images/banner_blue_small.png' %}" class="img-fluid" alt="" width="100%"
+         style="vertical-align: middle; margin-bottom: 50px">
     <form id="searchForm" action="/search/" method="get">
-        <div class="mb-3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
-            <input id="searchInput" type="search" class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary" style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Search" aria-label="Search" aria-describedby="button-addon1"/>
+        <div class="mb-3"
+             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
+            <input id="searchInput" type="search"
+                   class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                   style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Search"
+                   aria-label="Search" aria-describedby="button-addon1"/>
             <button
                     class="bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
                     type="submit"
                     id="button-addon1"
                     data-te-ripple-init data-te-ripple-color="light">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-8 w-5">
-                    <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd"
+                          d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                          clip-rule="evenodd"/>
                 </svg>
             </button>
         </div>
@@ -220,10 +367,10 @@
     {% for carousel in carousels %}
         <h1 id="myHeading_{{ forloop.counter }}" class="text-3xl font-bold text-sky-900 m-8">{{ carousel.title }}</h1>
         <div class="flex items-center relative object-contain carousel-container">
-        {% if carousel.items|length > 4 %}
-            <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
-                 src="{% static 'images/img1_left_pointer.png' %}">
-        {% endif %}
+            {% if carousel.items|length > 4 %}
+                <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
+                     src="{% static 'images/img1_left_pointer.png' %}">
+            {% endif %}
             <div class="popular snaps-inline w-full px-2">
 
                 {% for movie in carousel.items %}
@@ -278,7 +425,7 @@
             </div>
             {% if carousel.items|length > 4 %}
                 <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain nextBtn"
-                    src="{% static 'images/img2_right_pointer.png' %}">
+                     src="{% static 'images/img2_right_pointer.png' %}">
             {% endif %}
         </div>
     {% endfor %}

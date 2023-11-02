@@ -1,15 +1,80 @@
 import requests
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from datetime import datetime
+from .forms import CreateUserForm
+from django.contrib.auth.forms import UserCreationForm
+
+from django.contrib.auth import authenticate, login, logout
+
+from django.contrib import messages
+
+
 from django.http import JsonResponse
 import random
 import json
 
 
+def registerPage(request):
+
+    form = CreateUserForm()
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, 'Account was created for ' + user)
+
+
+            return redirect('login')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'register.html', context)
+
+def loginPage(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('show')
+
+
+
+        else:
+            messages.info(request, 'Username or password is incorrect')
+
+    context = {}
+    return render(request, 'login.html', context)
+
+
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
+
 def list(request):
-    popularity_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc"
-    genres_url = "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
-    all_genres_id_url = "https://api.themoviedb.org/3/genre/movie/list?language=uk"
+    languages = {
+        'en-US': 'English',
+        'uk-UA': 'Ukrainian',
+    }
+    selected_language = request.POST.get('language')
+    selected_language_code = selected_language
+    if selected_language_code == 'uk-UA':
+        popularity_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc"
+        genres_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
+        all_genres_id_url = f"https://api.themoviedb.org/3/genre/movie/list?language=uk-UA"
+    else:
+        popularity_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&page=2&sort_by=popularity.desc"
+        genres_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
+        all_genres_id_url = f"https://api.themoviedb.org/3/genre/movie/list?language=en-US"
 
     headers = {
         "accept": "application/json",
@@ -65,13 +130,22 @@ def list(request):
                           'vote_average': genre_item['vote_average'], 'overview': genre_item['overview'],
                           'genres': genre_item['genre_ids']})
 
-    movies_with_title = {'items': movies, 'title': 'Популярні'}
-    action_with_title = {'items': action, 'title': 'Бойовик'}
-    crime_with_title = {'items': crime, 'title': 'Кримінал'}
-    cartoons_with_title = {'items': cartoons, 'title': 'Мультики'}
-    drama_with_title = {'items': drama, 'title': 'Драма'}
+    if selected_language_code == 'uk-UA':
+        movies_with_title = {'items': movies, 'title': 'Популярні'}
+        action_with_title = {'items': action, 'title': 'Бойовик'}
+        crime_with_title = {'items': crime, 'title': 'Кримінал'}
+        cartoons_with_title = {'items': cartoons, 'title': 'Мультики'}
+        drama_with_title = {'items': drama, 'title': 'Драма'}
+    else:
+        movies_with_title = {'items': movies, 'title': 'Popular'}
+        action_with_title = {'items': action, 'title': 'Action'}
+        crime_with_title = {'items': crime, 'title': 'Crime'}
+        cartoons_with_title = {'items': cartoons, 'title': 'Cartoons'}
+        drama_with_title = {'items': drama, 'title': 'Drama'}
 
     context = {
+        'languages': languages,
+        'selected_language_code': selected_language_code,
         'movies': movies,
         'action': action,
         'all_genres_id': all_genres_id,
@@ -83,10 +157,17 @@ def list(request):
     return render(request, 'show.html', context)
 
 def search(request):
+    languages = {
+        'en-US': 'English',
+        'uk-UA': 'Ukrainian',
+        # Add other languages as needed
+    }
+    selected_language = request.POST.get('language')
+    selected_language_code = selected_language
     query = request.GET.get('query', '')
     api_key = 'cb72815d16c0c2f93f5abc32a69d716c'
 
-    url = f'https://api.themoviedb.org/3/search/movie?query={query}&api_key={api_key}&language=uk-UA'
+    url = f'https://api.themoviedb.org/3/search/movie?query={query}&api_key={api_key}&language={selected_language_code}'
 
     response = requests.get(url)
 
@@ -101,7 +182,9 @@ def search(request):
                            'vote_average': film_data['vote_average'], 'overview': film_data['overview']})
         context = {
             'films': films,
-            'query': query
+            'query': query,
+            'languages': languages,
+            'selected_language_code': selected_language_code,
         }
 
         return render(request, 'search.html', context)
