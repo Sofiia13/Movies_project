@@ -48,7 +48,7 @@
                                     href="{% url 'show' %}"
                                     data-te-ripple-init
                                     data-te-ripple-color="light"
-                            >Home</a
+                            >Головна</a
                             >
                         </li>
 
@@ -136,7 +136,7 @@
                 </button>
                 <button type="submit" name="language" value="en-US"
                         class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    US
+                    EN
                 </button>
             </form>
 
@@ -287,7 +287,7 @@
                 </button>
                 <button type="submit" name="language" value="en-US"
                         class="bg-blue-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    US
+                    EN
                 </button>
             </form>
 
@@ -364,8 +364,109 @@
 </script>
 
 <div>
+    <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-900 m-8">Watchlist</h1>
+    <div class="flex items-center relative object-contain carousel-container">
+        {% if watchlist_movies|length > 4 %}
+            <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
+                 src="{% static 'images/img1_left_pointer.png' %}">
+        {% endif %}
+        <div class="popular snaps-inline w-full px-2">
+            {% if watchlist_movies %}
+                {% for watchlist in watchlist_movies %}
+                    <div class="flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
+
+                        <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
+                        >
+                            <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
+                            <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
+                                 data-lity="">
+                                <div class="poster__info align-self-end w-full">
+                                    <div class="h-32"></div>
+                                    <div class="space-y-6 detail_info">
+                                        <div class="flex flex-col space-y-2 inner">
+
+                                            <h3 class="text-2xl font-bold text-white"
+                                                data-unsp-sanitized="clean">{{ watchlist.title }}</h3>
+                                        </div>
+                                        <div class="flex flex-row justify-between datos">
+                                            <div class="flex flex-col datos_col">
+                                                <div class="popularity">{{ watchlist.popularity }}</div>
+                                                <div class="text-sm text-gray-400">Популярність:</div>
+                                            </div>
+                                            <div class="flex flex-col datos_col">
+                                                <div class="release">{{ watchlist.release_date }}</div>
+                                                <div class="text-sm text-gray-400">Дата виходу:</div>
+                                            </div>
+                                            <div class="flex flex-col datos_col">
+                                                <div class="release">{{ watchlist.vote_average }}</div>
+                                                <div class="text-sm text-gray-400">Рейтинг:</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col overview">
+                                            <div class="flex flex-col"></div>
+                                            <div class="text-xs text-gray-400 mb-2">Опис:</div>
+                                            <p class="text-xs text-gray-100 mb-6">{{ watchlist.overview }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img class="absolute inset-0 transform w-full -translate-y-4"
+                                 src="https://image.tmdb.org/t/p/w342/{{ watchlist.poster_path }}"
+                                 style="filter: grayscale(0);"/>
+                            <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
+                                <button class="remove-from-watchlist flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-500 hover:bg-red-700"
+                                        onclick="removeFromWatchlist('{{ watchlist.id }}')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-sm text-white ml-2">Remove from Watchlist</span>
+                                </button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if watchlist_movies|length > 4 %}
+                    <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 justify-center object-contain nextBtn"
+                         src="{% static 'images/img2_right_pointer.png' %}">
+                {% endif %}
+            {% else %}
+                <p>No movies in the watchlist.</p>
+            {% endif %}
+            <script>
+    function removeFromWatchlist(movieId) {
+        fetch(`/remove_from_watchlist/${movieId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ movieId: movieId })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Removed from watchlist');
+                // After removing the movie, fetch the updated watchlist data and refresh the watchlist section
+                fetchAndRefreshWatchlist();
+            } else {
+                alert('Failed to remove from watchlist');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+        </div>
+    </div>
+</div>
+
+<div>
+    {#    <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-900 m-8">Watchlist</h1>#}
     {% for carousel in carousels %}
-        <h1 id="myHeading_{{ forloop.counter }}" class="text-3xl font-bold text-sky-900 m-8">{{ carousel.title }}</h1>
+        <h1 id="myHeading_{{ forloop.counter }}"
+            class="text-3xl font-bold text-sky-900 m-8">{{ carousel.title }}</h1>
         <div class="flex items-center relative object-contain carousel-container">
             {% if carousel.items|length > 4 %}
                 <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
@@ -373,12 +474,12 @@
             {% endif %}
             <div class="popular snaps-inline w-full px-2">
 
-                {% for movie in carousel.items %}
 
+                {% for movie in carousel.items %}
                     <div class="flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
 
                         <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
-                             data-movie-id="438631">
+                        >
                             <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
                             <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
                                  data-lity="">
@@ -415,7 +516,17 @@
                             <img class="absolute inset-0 transform w-full -translate-y-4"
                                  src="https://image.tmdb.org/t/p/w342/{{ movie.poster_path }}"
                                  style="filter: grayscale(0);"/>
-                            <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10"></div>
+                            <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
+                                <button class="add-to-watchlist flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-500 hover:bg-red-700"
+                                        onclick="addToWatchlist('{{ movie.id }}')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="text-sm text-white ml-2">Add to Watchlist</span>
+                                </button>
+                            </div>
 
 
                         </div>
@@ -430,6 +541,64 @@
         </div>
     {% endfor %}
 </div>
+
+<script>
+    function addToWatchlist(movieId) {
+        fetch(`/add_to_watchlist/${movieId}`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({movieId: movieId})
+        })
+            .then(response => {
+                if (response.ok) {
+                    alert('Added to watchlist');
+                    // After adding the movie, fetch the updated watchlist data and refresh the watchlist section
+                    fetchAndRefreshWatchlist();
+                } else {
+                    alert('Failed to add to watchlist');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    function updateWatchlistUI(data) {
+        const watchlistSection = document.querySelector('.popular');
+
+        // Clear the existing content
+        watchlistSection.innerHTML = '';
+
+        if (data.watchlist_movies && data.watchlist_movies.length > 0) {
+            // Display the updated watchlist
+            data.watchlist_movies.forEach(watchlist => {
+                // Create HTML elements to represent each movie
+                const movieItem = document.createElement('div');
+                movieItem.classList.add('max-w-sm', 'h-full', 'w-full', 'bg-white', 'shadow-md', 'rounded-lg', 'overflow-hidden', 'mx-auto');
+
+                // Add content to the created elements based on the received data
+                // Example: Populate title, popularity, release date, etc.
+                {#movieItem.innerHTML = `#}
+                {#    <h3 class="text-2xl font-bold text-white">${watchlist.title}</h3>#}
+                {#    <div class="popularity">${watchlist.popularity}</div>#}
+                {#    <div class="release">${watchlist.release_date}</div>#}
+                {#    <!-- Other movie details -->#}
+                {##}
+                {#    <button class="add-to-watchlist">Add to Watchlist</button>#}
+                {#`;#}
+
+                // Append the created elements to the watchlist section
+                watchlistSection.appendChild(movieItem);
+            });
+        } else {
+            // Display a message if the watchlist is empty
+            watchlistSection.innerHTML = '<p>No movies in the watchlist.</p>';
+        }
+    }
+
+</script>
+
 
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', (event) => {

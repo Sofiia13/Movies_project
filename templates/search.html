@@ -47,7 +47,7 @@
                                     href="{% url 'show' %}"
                                     data-te-ripple-init
                                     data-te-ripple-color="light"
-                            >Home</a
+                            >Головна</a
                             >
                         </li>
 
@@ -129,13 +129,14 @@
             </div>
             <form method="post">
                 {% csrf_token %}
-                <label for="language">Select Language:</label>
-                <select id="language" name="language">
-                    {% for code, name in languages.items %}
-                        <option value="{{ code }}">{{ name }}</option>
-                    {% endfor %}
-                </select>
-                <button type="submit">Submit</button>
+                <button type="submit" name="language" value="uk-UA"
+                        class="bg-blue-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    UA
+                </button>
+                <button type="submit" name="language" value="en-US"
+                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    EN
+                </button>
             </form>
 
             {% if request.user.username == '' %}
@@ -279,13 +280,14 @@
             </div>
             <form method="post">
                 {% csrf_token %}
-                <label for="language">Select Language:</label>
-                <select id="language" name="language">
-                    {% for code, name in languages.items %}
-                        <option value="{{ code }}">{{ name }}</option>
-                    {% endfor %}
-                </select>
-                <button type="submit">Submit</button>
+                <button type="submit" name="language" value="uk-UA"
+                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    UA
+                </button>
+                <button type="submit" name="language" value="en-US"
+                        class="bg-blue-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                    EN
+                </button>
             </form>
 
             {% if request.user.username == '' %}
@@ -365,19 +367,22 @@
         <h1 class="text-3xl font-bold text-sky-900 m-2">Results:</h1>
     {% endif %}
     <div class="flex items-center relative object-contain carousel-container">
-        <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
-             src="{% static 'images/img1_left_pointer.png' %}">
+        {% if films|length > 4 %}
+            <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
+                 src="{% static 'images/img1_left_pointer.png' %}">
+        {% endif %}
 
-        <div class="popular snaps-inline">
+        <div class="popular snaps-inline w-full px-2">
 
             {% for f in films %}
 
-                <div class='flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+                <div class="flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
 
-                    <div class="overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
+                    <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
                          data-movie-id="438631">
                         <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
-                        <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info" data-lity="">
+                        <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
+                             data-lity="">
                             <div class="poster__info align-self-end w-full">
                                 <div class="h-32"></div>
                                 <div class="space-y-6 detail_info">
@@ -409,7 +414,8 @@
                             </div>
                         </div>
                         <img class="absolute inset-0 transform w-full -translate-y-4"
-                             src="https://image.tmdb.org/t/p/w342/{{ f.poster_path }}" style="filter: grayscale(0);"/>
+                             src="https://image.tmdb.org/t/p/w342/{{ f.poster_path }}"
+                             style="filter: grayscale(0);"/>
                         <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10"></div>
 
 
@@ -418,28 +424,33 @@
             {% endfor %}
 
         </div>
-        <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain nextBtn"
-             src="{% static 'images/img2_right_pointer.png' %}">
-        <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', (event) => {
-                const carouselContainers = document.querySelectorAll('.carousel-container');
-                carouselContainers.forEach((element) => {
-                    const btnNext = element.getElementsByClassName('nextBtn')[0];
-
-                    const scrollableElement = element.querySelector('.popular');
-
-                    btnNext.addEventListener('click', () => {
-                        scrollableElement.scrollBy({left: 1500, behavior: 'smooth'})
-                    });
-
-                    const btnBack = element.getElementsByClassName('backBtn')[0];
-                    btnBack.addEventListener('click', () => {
-                        scrollableElement.scrollBy({left: -1500, behavior: 'smooth'})
-                    });
-                })
-            });
-        </script>
+        {% if films|length > 4 %}
+            <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain nextBtn"
+                 src="{% static 'images/img2_right_pointer.png' %}">
+        {% endif %}
     </div>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const carouselContainers = document.querySelectorAll('.carousel-container');
+        carouselContainers.forEach((element) => {
+            const btnNext = element.getElementsByClassName('nextBtn')[0];
+
+            const scrollableElement = element.querySelector('.popular');
+
+            btnNext.addEventListener('click', () => {
+                scrollableElement.scrollBy({left: 1500, behavior: 'smooth'})
+            });
+
+            const btnBack = element.getElementsByClassName('backBtn')[0];
+            btnBack.addEventListener('click', () => {
+                scrollableElement.scrollBy({left: -1500, behavior: 'smooth'})
+            });
+        })
+    });
+</script>
+</div>
 
 </div>
 
