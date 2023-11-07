@@ -436,28 +436,28 @@
             {% else %}
                 <p>No movies in the watchlist.</p>
             {% endif %}
-            <script>
-    function removeFromWatchlist(movieId) {
-        fetch(`/remove_from_watchlist/${movieId}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ movieId: movieId })
-        })
-        .then(response => {
-            if (response.ok) {
-                alert('Removed from watchlist');
-                // After removing the movie, fetch the updated watchlist data and refresh the watchlist section
-                fetchAndRefreshWatchlist();
-            } else {
-                alert('Failed to remove from watchlist');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-</script>
+{#            <script>#}
+{#    function removeFromWatchlist(movieId) {#}
+{#        fetch(`/remove_from_watchlist/${movieId}`, {#}
+{#            method: 'DELETE',#}
+{#            headers: {#}
+{#                'X-CSRFToken': '{{ csrf_token }}',#}
+{#                'Content-Type': 'application/json'#}
+{#            },#}
+{#            body: JSON.stringify({ movieId: movieId })#}
+{#        })#}
+{#        .then(response => {#}
+{#            if (response.ok) {#}
+{#                alert('Removed from watchlist');#}
+{#                // After removing the movie, fetch the updated watchlist data and refresh the watchlist section#}
+{#                fetchAndRefreshWatchlist();#}
+{#            } else {#}
+{#                alert('Failed to remove from watchlist');#}
+{#            }#}
+{#        })#}
+{#        .catch(error => console.error('Error:', error));#}
+{#    }#}
+{#</script>#}
         </div>
     </div>
 </div>

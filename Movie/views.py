@@ -273,29 +273,29 @@ def add_to_watchlist(request, movie_id):
     else:
         return JsonResponse({"message": "Failed to add to watchlist"}, status=400)
 
-def remove_from_watchlist(request, movie_id):
-    # Construct the TMDb API URL for removing a movie from the watchlist
-    url = f"https://api.themoviedb.org/3/account/{request.user.id}/watchlist"
-
-    # Prepare the data to be sent in the DELETE request
-    data = {
-        "media_type": "movie",
-        "media_id": movie_id,
-    }
-
-    # Set the API key in the headers
-    headers = {
-        "accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjcyODE1ZDE2YzBjMmY5M2Y1YWJjMzJhNjlkNzE2YyIsInN1YiI6IjY1MmZiMjM5MzU4ZGE3NWI1ZDAwYTcxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DkIixQiDr_Qb00rbzsDECmPGPfovi5uitXQad9O4EZ8",
-    }
-
-    # Send the DELETE request to remove the movie from the watchlist
-    response = requests.delete(url, headers=headers, params=data)
-
-    if response.status_code == 200:
-        return JsonResponse({"message": "Removed from watchlist"})
-    else:
-        return JsonResponse({"message": "Failed to remove from watchlist"}, status=400)
+# def remove_from_watchlist(request, movie_id):
+#     # Construct the TMDb API URL for removing a movie from the watchlist
+#     url = f"https://api.themoviedb.org/3/account/{request.user.id}/watchlist"
+#
+#     # Prepare the data to be sent in the DELETE request
+#     data = {
+#         "media_type": "movie",
+#         "media_id": movie_id,
+#     }
+#
+#     # Set the API key in the headers
+#     headers = {
+#         "accept": "application/json",
+#         "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjcyODE1ZDE2YzBjMmY5M2Y1YWJjMzJhNjlkNzE2YyIsInN1YiI6IjY1MmZiMjM5MzU4ZGE3NWI1ZDAwYTcxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DkIixQiDr_Qb00rbzsDECmPGPfovi5uitXQad9O4EZ8",
+#     }
+#
+#     # Send the DELETE request to remove the movie from the watchlist
+#     response = requests.delete(url, headers=headers, params=data)
+#
+#     if response.status_code == 200:
+#         return JsonResponse({"message": "Removed from watchlist"})
+#     else:
+#         return JsonResponse({"message": "Failed to remove from watchlist"}, status=400)
 # def add_to_user_list(request, movie_id):
 #     if request.method == 'POST':
 #         movie = get_object_or_404(Movie, pk=movie_id)
