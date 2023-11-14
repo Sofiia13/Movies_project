@@ -74,11 +74,13 @@ def list(request):
     selected_language_code = selected_language
     if selected_language_code == 'uk-UA':
         watchlist_url = f"https://api.themoviedb.org/3/account/{user_id}/watchlist/movies?language=uk-UA"
+        favorite_url = f"https://api.themoviedb.org/3/account/{user_id}/favorite/movies?language=uk-UA"
         popularity_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc"
         genres_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=uk-UA&page=1&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
         all_genres_id_url = f"https://api.themoviedb.org/3/genre/movie/list?language=uk-UA"
     else:
         watchlist_url = f"https://api.themoviedb.org/3/account/{user_id}/watchlist/movies?language=en-US"
+        favorite_url = f"https://api.themoviedb.org/3/account/{user_id}/favorite/movies?language=en-US"
         popularity_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&page=2&sort_by=popularity.desc"
         genres_url = f"https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&page=2&sort_by=popularity.desc&with_genres=Western%2C%20War%2C%20Thriller%2C%20TV%20Movie%2C%20Action%2C%20Adventure%2C%20Animation%2C%20Comedy%2C%20Crime%2C%20Documentary%2C%20Drama%2C%20Family%2C%20Fantasy%2C%20History%2C%20Horror%2C%20Music%2C%20Mystery%2C%20Romance%2C%20Science%20Fiction%2C%20Romance"
         all_genres_id_url = f"https://api.themoviedb.org/3/genre/movie/list?language=en-US"
@@ -92,11 +94,16 @@ def list(request):
     response_genres = requests.get(genres_url, headers=headers)
     response_all_genres_id = requests.get(all_genres_id_url, headers=headers)
     response_watchlist = requests.get(watchlist_url, headers=headers)
+    response_favorite = requests.get(watchlist_url, headers=headers)
     movies_data = response_popularity.json()['results']
     genres_data = response_genres.json()['results']
     ids_data = response_all_genres_id.json()['genres']
     if response_watchlist.status_code == 200:
         watchlist_movies = response_watchlist.json().get('results')
+    else:
+        watchlist_movies = None
+    if response_favorite.status_code == 200:
+        favorite_movies = response_favorite.json().get('results')
     else:
         watchlist_movies = None
     movies = []
@@ -107,12 +114,12 @@ def list(request):
     drama = []
     all_genres_id = []
 
-    for watch in watchlist_movies:
-        date = datetime.strptime(watch['release_date'], "%Y-%m-%d")
-        formatted_date = date.strftime("%d.%m.%Y")
-        watchlist.append({'title': watch['title'], 'poster_path': watch['poster_path'],
-                       'popularity': watch['popularity'], 'release_date': formatted_date,
-                       'vote_average': watch['vote_average'], 'overview': watch['overview'], 'id': watch['id']})
+    # for watch in watchlist_movies:
+    #     date = datetime.strptime(watch['release_date'], "%Y-%m-%d")
+    #     formatted_date = date.strftime("%d.%m.%Y")
+    #     watchlist.append({'title': watch['title'], 'poster_path': watch['poster_path'],
+    #                    'popularity': watch['popularity'], 'release_date': formatted_date,
+    #                    'vote_average': watch['vote_average'], 'overview': watch['overview'], 'id': watch['id']})
 
     for movie_data in movies_data:
         date = datetime.strptime(movie_data['release_date'], "%Y-%m-%d")
@@ -172,7 +179,9 @@ def list(request):
         'cartoons': cartoons,
         'drama': drama,
         'watchlist_movies': watchlist_movies,
+        'favorite_movies': favorite_movies,
         'carousels': [movies_with_title, action_with_title, crime_with_title, cartoons_with_title, drama_with_title],
+        'userId': user_id,
         # 'watchlist': watchlist_with_title
     }
 
@@ -212,36 +221,6 @@ def search(request):
         return render(request, 'search.html', context)
 
 
-# def add_to_watchlist(request, movie_id):
-#     if request.user.is_authenticated:  # Check if the user is authenticated
-#         user_id = request.user.id  # Get the authenticated user's ID
-#         # TMDb API URL
-#         url = f"https://api.themoviedb.org/3/account/{user_id}/watchlist"
-#
-#         # Data to be sent in the POST request
-#         data = {
-#             "media_type": "movie",
-#             "media_id": movie_id,
-#             "watchlist": True
-#         }
-#
-#
-#         # Add the API key to the request headers
-#         headers = {
-#             "accept": "application/json",
-#             "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjcyODE1ZDE2YzBjMmY5M2Y1YWJjMzJhNjlkNzE2YyIsInN1YiI6IjY1MmZiMjM5MzU4ZGE3NWI1ZDAwYTcxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DkIixQiDr_Qb00rbzsDECmPGPfovi5uitXQad9O4EZ8",  # Use the API key from settings
-#         }
-#
-#         # Send POST request to add movie to watchlist
-#         response = requests.post(url, headers=headers, json=data)
-#
-#         if response.status_code == 201:
-#             return JsonResponse({"message": "Added to watchlist"})
-#         else:
-#             return JsonResponse({"message": "Failed to add to watchlist"}, status=400)
-#     else:
-#         return JsonResponse({"message": "User not authenticated"}, status=401)
-
 def add_to_watchlist(request, movie_id):
     # Log or print to verify the received movie ID
     print(f"Received movie ID: {movie_id}")
@@ -273,29 +252,39 @@ def add_to_watchlist(request, movie_id):
     else:
         return JsonResponse({"message": "Failed to add to watchlist"}, status=400)
 
-# def remove_from_watchlist(request, movie_id):
-#     # Construct the TMDb API URL for removing a movie from the watchlist
-#     url = f"https://api.themoviedb.org/3/account/{request.user.id}/watchlist"
-#
-#     # Prepare the data to be sent in the DELETE request
-#     data = {
-#         "media_type": "movie",
-#         "media_id": movie_id,
-#     }
-#
-#     # Set the API key in the headers
-#     headers = {
-#         "accept": "application/json",
-#         "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjcyODE1ZDE2YzBjMmY5M2Y1YWJjMzJhNjlkNzE2YyIsInN1YiI6IjY1MmZiMjM5MzU4ZGE3NWI1ZDAwYTcxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DkIixQiDr_Qb00rbzsDECmPGPfovi5uitXQad9O4EZ8",
-#     }
-#
-#     # Send the DELETE request to remove the movie from the watchlist
-#     response = requests.delete(url, headers=headers, params=data)
-#
-#     if response.status_code == 200:
-#         return JsonResponse({"message": "Removed from watchlist"})
-#     else:
-#         return JsonResponse({"message": "Failed to remove from watchlist"}, status=400)
+def remove_from_watchlist(request, movieId):
+    # Log or print to verify the received movie ID
+    print(f"Received movie ID: {movieId}")
+
+    # Construct the TMDb API URL
+    url = f"https://api.themoviedb.org/3/account/{request.user.id}/watchlist"
+
+    # Prepare the data to be sent in the POST request
+    data = {
+        "media_type": "movie",
+        "media_id": movieId,
+        "watchlist": True
+    }
+
+    # Set the API key in the headers
+    headers = {
+        "accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYjcyODE1ZDE2YzBjMmY5M2Y1YWJjMzJhNjlkNzE2YyIsInN1YiI6IjY1MmZiMjM5MzU4ZGE3NWI1ZDAwYTcxMyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DkIixQiDr_Qb00rbzsDECmPGPfovi5uitXQad9O4EZ8",
+    }
+
+    # Send the POST request to add the movie to the watchlist
+    response = requests.post(url, headers=headers, json=data)
+
+    # Log the response content for debugging
+    print(f"Response from TMDb API: {response.content}")
+
+    if response.status_code == 201:
+
+        return JsonResponse({"message": "Removed from watchlist"})
+    else:
+        return JsonResponse({"message": "Failed to remove from watchlist"}, status=400)
+
+
 # def add_to_user_list(request, movie_id):
 #     if request.method == 'POST':
 #         movie = get_object_or_404(Movie, pk=movie_id)

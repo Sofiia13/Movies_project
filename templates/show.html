@@ -86,6 +86,12 @@
                                     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                                         <div>
                                             <a
+                                                    href="{% url 'show' %}#myHeading_watchlist"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Переглянуте</a
+                                            >
+                                            <a
                                                     href="{% url 'show' %}#myHeading_1"
                                                     aria-current="true"
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
@@ -97,59 +103,56 @@
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
                                             >Бойовик</a
                                             >
+
+                                        </div>
+                                        <div>
                                             <a
                                                     href="{% url 'show' %}#myHeading_3"
                                                     aria-current="true"
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                            >Кримінал</a
-                                            >
+                                            >Кримінал</a>
                                             <a
                                                     href="{% url 'show' %}#myHeading_4"
                                                     aria-current="true"
-                                                    class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                            >Мультики</a
-                                            >
-                                        </div>
-                                        <div>
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Мультики</a>
                                             <a
                                                     href="{% url 'show' %}#myHeading_5"
                                                     aria-current="true"
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                            >Драма</a
-                                            >
-
-
+                                            >Драма</a>
                                         </div>
 
                                     </div>
                                 </div>
-                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <form method="post">
-                {% csrf_token %}
-                <button type="submit" name="language" value="uk-UA"
-                        class="bg-blue-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    UA
-                </button>
-                <button type="submit" name="language" value="en-US"
-                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    EN
-                </button>
-            </form>
+            <div class="flex justify-end grow">
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="language" value="uk-UA"
+                            class="bg-sky-900 hover:bg-sky-700 text-sky-50 font-semibold hover:text-white py-2 px-4 border border-sky-700 hover:border-transparent rounded">
+                        UA
+                    </button>
+                    <button type="submit" name="language" value="en-US"
+                            class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-700 hover:border-transparent rounded">
+                        EN
+                    </button>
+                </form>
+            </div>
 
             {% if request.user.username == '' %}
-                <div class="flex justify-end grow">
-                    <a href="{% url 'register' %}"
-                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
-                        Зареєструватися
-                    </a>
-                    <a href="{% url 'login' %}"
-                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
-                        Увійти
-                    </a>
+
+                <a href="{% url 'register' %}"
+                   class="bg-sky-900 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2 ml-4">
+                    Зареєструватися
+                </a>
+                <a href="{% url 'login' %}"
+                   class="bg-sky-900 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2">
+                    Увійти
+                </a>
                 </div>
             {% else %}
                 <div class="flex justify-end grow">
@@ -237,6 +240,12 @@
                                     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                                         <div>
                                             <a
+                                                    href="{% url 'show' %}#myHeading_watchlist"
+                                                    aria-current="true"
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Watchlist</a
+                                            >
+                                            <a
                                                     href="{% url 'show' %}#myHeading_1"
                                                     aria-current="true"
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
@@ -248,28 +257,23 @@
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
                                             >Action</a
                                             >
+
+                                        </div>
+                                        <div>
                                             <a
                                                     href="{% url 'show' %}#myHeading_3"
                                                     aria-current="true"
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                            >Crime</a
-                                            >
+                                            >Crime</a>
                                             <a
                                                     href="{% url 'show' %}#myHeading_4"
                                                     aria-current="true"
-                                                    class="block w-full px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                            >Cartoons</a
-                                            >
-                                        </div>
-                                        <div>
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white">Cartoons</a>
                                             <a
                                                     href="{% url 'show' %}#myHeading_5"
                                                     aria-current="true"
                                                     class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
-                                            >Drama</a
-                                            >
-
-
+                                            >Drama</a>
                                         </div>
 
                                     </div>
@@ -279,35 +283,36 @@
                     </ul>
                 </div>
             </div>
-            <form method="post">
-                {% csrf_token %}
-                <button type="submit" name="language" value="uk-UA"
-                        class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    UA
-                </button>
-                <button type="submit" name="language" value="en-US"
-                        class="bg-blue-500 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                    EN
-                </button>
-            </form>
+            <div class="flex justify-end grow">
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" name="language" value="uk-UA"
+                            class="bg-transparent hover:bg-sky-700 text-sky-700 font-semibold hover:text-white py-2 px-4 border border-sky-700 hover:border-transparent rounded">
+                        UA
+                    </button>
+                    <button type="submit" name="language" value="en-US"
+                            class="bg-sky-900 hover:bg-sky-700 text-sky-50 font-semibold hover:text-white py-2 px-4 border border-sky-700 hover:border-transparent rounded">
+                        EN
+                    </button>
+                </form>
 
-            {% if request.user.username == '' %}
-                <div class="flex justify-end grow">
+                {% if request.user.username == '' %}
+
                     <a href="{% url 'register' %}"
-                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
+                       class="bg-sky-900 hover:bg-sky-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2 ml-4">
                         Sign up
                     </a>
                     <a href="{% url 'login' %}"
-                       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mr-2">
+                       class="bg-sky-900 hover:bg-sky-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2">
                         Sign in
                     </a>
-                </div>
-            {% else %}
-                <div class="flex justify-end grow">
-                    <span class="text-lg text-black mr-4">Hello, {{ request.user }}</span>
-                    <span class="text-lg text-black mr-4"><a href="{% url 'logout' %}">Logout</a></span>
-                </div>
-            {% endif %}
+                    </div>
+                {% else %}
+                    <div class="flex justify-end grow">
+                        <span class="text-lg text-black mr-4">Hello, {{ request.user }}</span>
+                        <span class="text-lg text-black mr-4"><a href="{% url 'logout' %}">Logout</a></span>
+                    </div>
+                {% endif %}
 
 
         </nav>
@@ -324,300 +329,391 @@
 
 </header>
 <body>
-<div style="position: relative;">
-    <img src="{% static 'images/banner_blue_small.png' %}" class="img-fluid" alt="" width="100%"
-         style="vertical-align: middle; margin-bottom: 50px">
-    <form id="searchForm" action="/search/" method="get">
-        <div class="mb-3"
-             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
-            <input id="searchInput" type="search"
-                   class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
-                   style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Search"
-                   aria-label="Search" aria-describedby="button-addon1"/>
-            <button
-                    class="bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
-                    type="submit"
-                    id="button-addon1"
-                    data-te-ripple-init data-te-ripple-color="light">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-8 w-5">
-                    <path fill-rule="evenodd"
-                          d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                          clip-rule="evenodd"/>
-                </svg>
-            </button>
-        </div>
-    </form>
-</div>
-
-<script>
-    const searchUrl = "/search/"; // Set the URL for the search page
-
-    document.getElementById('searchForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        const query = document.getElementById('searchInput').value;
-
-        console.log('Query:', query);
-
-        window.location.href = searchUrl + "?query=" + encodeURIComponent(query);
-    });
-</script>
-
-<div>
-    <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-900 m-8">Watchlist</h1>
-    <div class="flex items-center relative object-contain carousel-container">
-        {% if watchlist_movies|length > 4 %}
-            <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
-                 src="{% static 'images/img1_left_pointer.png' %}">
+<div class="bg-sky-900">
+    <div style="position: relative;">
+        <img src="{% static 'images/banner_blue_small.png' %}" class="img-fluid" alt="" width="100%"
+             style="vertical-align: middle; margin-bottom: 50px">
+        {% if selected_language_code == 'uk-UA' %}
+            <div class="mb-3"
+                 style="position: absolute; top: 25%; left: 50%; color: white; font-weight: bold; font-size: 70px; transform: translate(-50%, -50%); display: flex; align-items: center;">
+                <p>Знайди свій фільм</p>
+            </div>
+        {% else %}
+            <div class="mb-3"
+                 style="position: absolute; top: 25%; left: 50%; color: white; font-weight: bold; font-size: 70px; transform: translate(-50%, -50%); display: flex; align-items: center;">
+                <p>Find your movie</p>
+            </div>
         {% endif %}
-        <div class="popular snaps-inline w-full px-2">
-            {% if watchlist_movies %}
-                {% for watchlist in watchlist_movies %}
-                    <div class="flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
-
-                        <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
-                        >
-                            <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
-                            <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
-                                 data-lity="">
-                                <div class="poster__info align-self-end w-full">
-                                    <div class="h-32"></div>
-                                    <div class="space-y-6 detail_info">
-                                        <div class="flex flex-col space-y-2 inner">
-
-                                            <h3 class="text-2xl font-bold text-white"
-                                                data-unsp-sanitized="clean">{{ watchlist.title }}</h3>
-                                        </div>
-                                        <div class="flex flex-row justify-between datos">
-                                            <div class="flex flex-col datos_col">
-                                                <div class="popularity">{{ watchlist.popularity }}</div>
-                                                <div class="text-sm text-gray-400">Популярність:</div>
-                                            </div>
-                                            <div class="flex flex-col datos_col">
-                                                <div class="release">{{ watchlist.release_date }}</div>
-                                                <div class="text-sm text-gray-400">Дата виходу:</div>
-                                            </div>
-                                            <div class="flex flex-col datos_col">
-                                                <div class="release">{{ watchlist.vote_average }}</div>
-                                                <div class="text-sm text-gray-400">Рейтинг:</div>
-                                            </div>
-                                        </div>
-                                        <div class="flex flex-col overview">
-                                            <div class="flex flex-col"></div>
-                                            <div class="text-xs text-gray-400 mb-2">Опис:</div>
-                                            <p class="text-xs text-gray-100 mb-6">{{ watchlist.overview }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <img class="absolute inset-0 transform w-full -translate-y-4"
-                                 src="https://image.tmdb.org/t/p/w342/{{ watchlist.poster_path }}"
-                                 style="filter: grayscale(0);"/>
-                            <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
-                                <button class="remove-from-watchlist flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-500 hover:bg-red-700"
-                                        onclick="removeFromWatchlist('{{ watchlist.id }}')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-sm text-white ml-2">Remove from Watchlist</span>
-                                </button>
-                            </div>
-
-
-                        </div>
-                    </div>
-                {% endfor %}
-                {% if watchlist_movies|length > 4 %}
-                    <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 justify-center object-contain nextBtn"
-                         src="{% static 'images/img2_right_pointer.png' %}">
-                {% endif %}
-            {% else %}
-                <p>No movies in the watchlist.</p>
-            {% endif %}
-{#            <script>#}
-{#    function removeFromWatchlist(movieId) {#}
-{#        fetch(`/remove_from_watchlist/${movieId}`, {#}
-{#            method: 'DELETE',#}
-{#            headers: {#}
-{#                'X-CSRFToken': '{{ csrf_token }}',#}
-{#                'Content-Type': 'application/json'#}
-{#            },#}
-{#            body: JSON.stringify({ movieId: movieId })#}
-{#        })#}
-{#        .then(response => {#}
-{#            if (response.ok) {#}
-{#                alert('Removed from watchlist');#}
-{#                // After removing the movie, fetch the updated watchlist data and refresh the watchlist section#}
-{#                fetchAndRefreshWatchlist();#}
-{#            } else {#}
-{#                alert('Failed to remove from watchlist');#}
-{#            }#}
-{#        })#}
-{#        .catch(error => console.error('Error:', error));#}
-{#    }#}
-{#</script>#}
-        </div>
+        <form id="searchForm" action="/search/" method="get">
+            <div class="mb-3"
+                 style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
+                <input id="searchInput" type="search"
+                       class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                       style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Search"
+                       aria-label="Search" aria-describedby="button-addon1"/>
+                <button
+                        class="bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                        type="submit"
+                        id="button-addon1"
+                        data-te-ripple-init data-te-ripple-color="light">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-8 w-5">
+                        <path fill-rule="evenodd"
+                              d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                              clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
     </div>
-</div>
 
-<div>
-    {#    <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-900 m-8">Watchlist</h1>#}
-    {% for carousel in carousels %}
-        <h1 id="myHeading_{{ forloop.counter }}"
-            class="text-3xl font-bold text-sky-900 m-8">{{ carousel.title }}</h1>
+    <script>
+        const searchUrl = "/search/"; // Set the URL for the search page
+
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const query = document.getElementById('searchInput').value;
+
+            console.log('Query:', query);
+
+            window.location.href = searchUrl + "?query=" + encodeURIComponent(query);
+        });
+    </script>
+
+    <div>
+        {% if selected_language_code == 'uk-UA' %}
+            <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-50 m-8">Переглянуті</h1>
+        {% else %}
+            <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-50 m-8">Watchlist</h1>
+        {% endif %}
+        {#    <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-900 m-8">Watchlist</h1>#}
         <div class="flex items-center relative object-contain carousel-container">
-            {% if carousel.items|length > 4 %}
+            {% if watchlist_movies|length > 4 %}
                 <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
                      src="{% static 'images/img1_left_pointer.png' %}">
             {% endif %}
             <div class="popular snaps-inline w-full px-2">
+                {% if watchlist_movies %}
+                    {% for watchlist in watchlist_movies %}
+                        <div class="flex max-w-sm h-full w-full bg-sky-900 shadow-md rounded-lg overflow-hidden mx-auto">
 
+                            <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
+                            >
+                                <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
+                                <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
+                                     data-lity="">
+                                    <div class="poster__info align-self-end w-full">
+                                        <div class="h-32"></div>
+                                        <div class="space-y-6 detail_info">
+                                            <div class="flex flex-col space-y-2 inner">
 
-                {% for movie in carousel.items %}
-                    <div class="flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto">
-
-                        <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
-                        >
-                            <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
-                            <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
-                                 data-lity="">
-                                <div class="poster__info align-self-end w-full">
-                                    <div class="h-32"></div>
-                                    <div class="space-y-6 detail_info">
-                                        <div class="flex flex-col space-y-2 inner">
-
-                                            <h3 class="text-2xl font-bold text-white"
-                                                data-unsp-sanitized="clean">{{ movie.title }}</h3>
-                                        </div>
-                                        <div class="flex flex-row justify-between datos">
-                                            <div class="flex flex-col datos_col">
-                                                <div class="popularity">{{ movie.popularity }}</div>
-                                                <div class="text-sm text-gray-400">Популярність:</div>
+                                                <h3 class="text-2xl font-bold text-white"
+                                                    data-unsp-sanitized="clean">{{ watchlist.title }}</h3>
                                             </div>
-                                            <div class="flex flex-col datos_col">
-                                                <div class="release">{{ movie.release_date }}</div>
-                                                <div class="text-sm text-gray-400">Дата виходу:</div>
+                                            <div class="flex flex-row justify-between datos">
+                                                <div class="flex flex-col datos_col">
+                                                    <div class="popularity">{{ watchlist.popularity }}</div>
+                                                    <div class="text-sm text-gray-400">Популярність:</div>
+                                                </div>
+                                                <div class="flex flex-col datos_col">
+                                                    <div class="release">{{ watchlist.release_date }}</div>
+                                                    <div class="text-sm text-gray-400">Дата виходу:</div>
+                                                </div>
+                                                <div class="flex flex-col datos_col">
+                                                    <div class="release">{{ watchlist.vote_average }}</div>
+                                                    <div class="text-sm text-gray-400">Рейтинг:</div>
+                                                </div>
                                             </div>
-                                            <div class="flex flex-col datos_col">
-                                                <div class="release">{{ movie.vote_average }}</div>
-                                                <div class="text-sm text-gray-400">Рейтинг:</div>
+                                            <div class="flex flex-col overview">
+                                                <div class="flex flex-col"></div>
+                                                <div class="text-xs text-gray-400 mb-2">Опис:</div>
+                                                <p class="text-xs text-gray-100 mb-6">{{ watchlist.overview }}</p>
                                             </div>
-                                        </div>
-                                        <div class="flex flex-col overview">
-                                            <div class="flex flex-col"></div>
-                                            <div class="text-xs text-gray-400 mb-2">Опис:</div>
-                                            <p class="text-xs text-gray-100 mb-6">{{ movie.overview }}</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <img class="absolute inset-0 transform w-full -translate-y-4"
-                                 src="https://image.tmdb.org/t/p/w342/{{ movie.poster_path }}"
-                                 style="filter: grayscale(0);"/>
-                            <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
-                                <button class="add-to-watchlist flex items-center py-2 px-4 rounded-full mx-auto text-white bg-red-500 hover:bg-red-700"
-                                        onclick="addToWatchlist('{{ movie.id }}')">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                         viewBox="0 0 24 24" stroke="currentColor">
+                                <img class="absolute inset-0 transform w-full -translate-y-4"
+                                     src="https://image.tmdb.org/t/p/w342/{{ watchlist.poster_path }}"
+                                     style="filter: grayscale(0);"/>
+                                <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
+                                    <button class="remove-from-watchlist flex items-center py-2 px-4 rounded-full mx-auto text-white bg-sky-900 hover:bg-sky-900"
+                                            onclick="removeFromWatchlist('{{ watchlist.id }}')">
+                                        {#                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"#}
+                                        {#                                             viewBox="0 0 24 24" stroke="currentColor">#}
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="text-sm text-white ml-2">Add to Watchlist</span>
-                                </button>
+                                        </svg>
+                                        <span class="text-sm text-white ml-2">Remove from Watchlist</span>
+                                    </button>
+                                </div>
+
+
                             </div>
-
-
                         </div>
-                    </div>
-                {% endfor %}
+
+                    {% endfor %}
+                    {% if watchlist_movies|length > 4 %}
+                        <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 justify-center object-contain nextBtn"
+                             src="{% static 'images/img2_right_pointer.png' %}">
+                    {% endif %}
+                {% else %}
+                    <p>No movies in the watchlist.</p>
+                {% endif %}
+
 
             </div>
-            {% if carousel.items|length > 4 %}
-                <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain nextBtn"
-                     src="{% static 'images/img2_right_pointer.png' %}">
-            {% endif %}
         </div>
-    {% endfor %}
-</div>
+    </div>
 
-<script>
-    function addToWatchlist(movieId) {
-        fetch(`/add_to_watchlist/${movieId}`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({movieId: movieId})
-        })
-            .then(response => {
-                if (response.ok) {
-                    alert('Added to watchlist');
-                    // After adding the movie, fetch the updated watchlist data and refresh the watchlist section
-                    fetchAndRefreshWatchlist();
-                } else {
-                    alert('Failed to add to watchlist');
-                }
+{#    <script>#}
+{#        // Перевіряємо, чи є userId визначеним, якщо ні, то визначаємо його як null#}
+{#        const userId = {{ userId|default:"null" }};#}
+{##}
+{#        document.addEventListener('DOMContentLoaded', function () {#}
+{#            // Знаходимо кнопки за класом .remove-from-watchlist#}
+{#            const removeFromWatchlistButtons = document.querySelectorAll('.remove-from-watchlist');#}
+{##}
+{#            if (removeFromWatchlistButtons.length > 0) {#}
+{#                // Додаємо обробник подій для кожної кнопки#}
+{#                removeFromWatchlistButtons.forEach(button => {#}
+{#                    button.addEventListener('click', function () {#}
+{#                        const movieId = this.getAttribute('data-movie-id');#}
+{#                        removeFromWatchlist(movieId);#}
+{#                    });#}
+{#                });#}
+{#            } else {#}
+{#                console.error("Кнопки 'remove-from-watchlist' не знайдено.");#}
+{#            }#}
+{#        });#}
+{##}
+{#        function removeFromWatchlist(movieId) {#}
+{#            fetch(`/remove_from_watchlist/${movieId}`, {#}
+{#                method: 'POST',#}
+{#                headers: {#}
+{#                    'X-CSRFToken': '{{ csrf_token }}',#}
+{#                    'Content-Type': 'application/json'#}
+{#                },#}
+{#            })#}
+{#                .then(response => {#}
+{#                    if (response.ok) {#}
+{#                        alert('Видалено зі списку перегляду');#}
+{#                        // Викликаємо функцію updateWatchlistUI з переданим movieId#}
+{#                        updateWatchlistUI(movieId);#}
+{#                    } else {#}
+{#                        alert('Не вдалося видалити зі списку перегляду');#}
+{#                    }#}
+{#                })#}
+{#                .catch(error => console.error('Помилка:', error));#}
+{#        }#}
+{##}
+{#        function updateWatchlistUI(movieId) {#}
+{#            console.log("Видаляємо елемент з ID:", movieId);#}
+{##}
+{#            // Логіка пошуку та видалення елементу з DOM#}
+{#            const movieElement = document.getElementById(movieId);#}
+{#            console.log("Знайдено елемент:", movieElement);#}
+{##}
+{#            if (movieElement) {#}
+{#                console.log("Знайдено батьківський вузол:", movieElement.parentNode);#}
+{#                movieElement.parentNode.removeChild(movieElement);#}
+{#            } else {#}
+{#                console.log("Елемент фільму не знайдено!");#}
+{#            }#}
+{##}
+{#            // Необов'язково: оновлення заголовка в залежності від вмісту списку#}
+{#            const heading = document.getElementById('myHeading_watchlist');#}
+{#            if (heading) {#}
+{#                const watchlist = document.getElementsByClassName('movie-item');#}
+{#                if (watchlist.length === 0) {#}
+{#                    heading.innerText = "Немає фільмів у списку перегляду.";#}
+{#                }#}
+{#            }#}
+{#        }#}
+{#    </script>#}
+    {#<script>#}
+    {#    const userId = {{ userId|default:"null" }};#}
+    {##}
+    {#    function removeFromWatchlist(movieId) {#}
+    {#        fetch(`/remove_from_watchlist/${movieId}`, {#}
+    {#            method: 'DELETE',#}
+    {#            headers: {#}
+    {#                'X-CSRFToken': '{{ csrf_token }}',#}
+    {#                'Content-Type': 'application/json'#}
+    {#            },#}
+    {#        })#}
+    {#        .then(response => {#}
+    {#            if (response.ok) {#}
+    {#                alert('Removed from watchlist');#}
+    {#                removeMovieFromUI(movieId); // Видалити фільм з UI#}
+    {#                fetchAndRefreshWatchlist(); // Оновити дані watchlist після видалення#}
+    {#            } else {#}
+    {#                alert('Failed to remove from watchlist');#}
+    {#            }#}
+    {#        })#}
+    {#        .catch(error => console.error('Error:', error));#}
+    {#    }#}
+    {##}
+    {#    function removeMovieFromUI(movieId) {#}
+    {#        const movieElement = document.getElementById(`movie_${movieId}`);#}
+    {#        if (movieElement) {#}
+    {#            movieElement.remove(); // Видалити елемент фільму з UI#}
+    {#        }#}
+    {#    }#}
+    {##}
+    {#    function fetchAndRefreshWatchlist() {#}
+    {#        // Виконати запит для отримання оновлених даних watchlist і поновлення UI#}
+    {#        fetch('/get_watchlist_data') // Замість цього має бути ваш URL для отримання даних watchlist#}
+    {#        .then(response => response.json())#}
+    {#        .then(data => updateWatchlistUI(data))#}
+    {#        .catch(error => console.error('Error:', error));#}
+    {#    }#}
+    {##}
+    {#    function updateWatchlistUI(data) {#}
+    {#        const watchlistSection = document.querySelector('.popular');#}
+    {#        watchlistSection.innerHTML = ''; // Очистити існуючий вміст#}
+    {##}
+    {#        if (data.watchlist_movies && data.watchlist_movies.length > 0) {#}
+    {#            data.watchlist_movies.forEach(watchlist => {#}
+    {#                // Створення HTML для кожного елемента в оновленому watchlist#}
+    {#                const movieElement = `#}
+    {#                    <div class="flex max-w-sm h-full w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto" id="movie_${watchlist.id}">#}
+    {##}
+    {#                    </div>#}
+    {#                `;#}
+    {#                watchlistSection.insertAdjacentHTML('beforeend', movieElement);#}
+    {#            });#}
+    {#        } else {#}
+    {#            watchlistSection.innerHTML = '<p>No movies in the watchlist.</p>';#}
+    {#        }#}
+    {#    }#}
+    {#</script>#}
+
+    <div>
+        {#    <h1 id="myHeading_watchlist" class="text-3xl font-bold text-sky-900 m-8">Watchlist</h1>#}
+        {% for carousel in carousels %}
+
+            <h1 id="myHeading_{{ forloop.counter }}"
+                class="text-3xl font-bold text-sky-50 m-8">{{ carousel.title }}</h1>
+            <div class="flex items-center relative object-contain carousel-container">
+                {% if carousel.items|length > 4 %}
+                    <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain backBtn"
+                         src="{% static 'images/img1_left_pointer.png' %}">
+                {% endif %}
+                <div class="popular snaps-inline w-full px-2">
+
+
+                    {% for movie in carousel.items %}
+                        <div class="flex max-w-sm h-full w-full bg-sky-900 shadow-md rounded-lg overflow-hidden mx-auto">
+
+                            <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
+                            >
+                                <div class="absolute inset-0 z-10 transition duration-300 ease-in-out bg-gradient-to-t from-black via-gray-900 to-transparent"></div>
+                                <div class="relative cursor-pointer group z-10 px-10 pt-10 space-y-6 movie_info"
+                                     data-lity="">
+                                    <div class="poster__info align-self-end w-full">
+                                        <div class="h-32"></div>
+                                        <div class="space-y-6 detail_info">
+                                            <div class="flex flex-col space-y-2 inner">
+
+                                                <h3 class="text-2xl font-bold text-white"
+                                                    data-unsp-sanitized="clean">{{ movie.title }}</h3>
+                                            </div>
+                                            <div class="flex flex-row justify-between datos">
+                                                <div class="flex flex-col datos_col">
+                                                    <div class="popularity">{{ movie.popularity }}</div>
+                                                    <div class="text-sm text-gray-400">Популярність:</div>
+                                                </div>
+                                                <div class="flex flex-col datos_col">
+                                                    <div class="release">{{ movie.release_date }}</div>
+                                                    <div class="text-sm text-gray-400">Дата виходу:</div>
+                                                </div>
+                                                <div class="flex flex-col datos_col">
+                                                    <div class="release">{{ movie.vote_average }}</div>
+                                                    <div class="text-sm text-gray-400">Рейтинг:</div>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col overview">
+                                                <div class="flex flex-col"></div>
+                                                <div class="text-xs text-gray-400 mb-2">Опис:</div>
+                                                <p class="text-xs text-gray-100 mb-6">{{ movie.overview }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img class="absolute inset-0 transform w-full -translate-y-4"
+                                     src="https://image.tmdb.org/t/p/w342/{{ movie.poster_path }}"
+                                     style="filter: grayscale(0);"/>
+                                <div class="poster__footer flex flex-row relative pb-10 space-x-4 z-10">
+                                    <button class="add-to-watchlist flex items-center py-2 px-4 rounded-full mx-auto text-white bg-sky-900 hover:bg-sky-900"
+                                            onclick="addToWatchlist('{{ movie.id }}')">
+                                        {#                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"#}
+                                        {#                                                 viewBox="0 0 24 24" stroke="currentColor">#}
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span class="text-sm text-white ml-2">Add to Watchlist</span>
+                                    </button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                {% if carousel.items|length > 4 %}
+                    <img class="w-12 h-12 absolute rounded-full bg-black cursor-pointer p-3 object-contain nextBtn"
+                         src="{% static 'images/img2_right_pointer.png' %}">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <script>
+        // Отримання ідентифікатора користувача з Django та передача його до JavaScript
+        const userId = {{ userId|default:"null" }};
+
+        function addToWatchlist(movieId) {
+            fetch(`/add_to_watchlist/${movieId}`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({movieId: movieId, userId: userId}) // Додайте ідентифікатор користувача до запиту
             })
-            .catch(error => console.error('Error:', error));
-    }
-
-    function updateWatchlistUI(data) {
-        const watchlistSection = document.querySelector('.popular');
-
-        // Clear the existing content
-        watchlistSection.innerHTML = '';
-
-        if (data.watchlist_movies && data.watchlist_movies.length > 0) {
-            // Display the updated watchlist
-            data.watchlist_movies.forEach(watchlist => {
-                // Create HTML elements to represent each movie
-                const movieItem = document.createElement('div');
-                movieItem.classList.add('max-w-sm', 'h-full', 'w-full', 'bg-white', 'shadow-md', 'rounded-lg', 'overflow-hidden', 'mx-auto');
-
-                // Add content to the created elements based on the received data
-                // Example: Populate title, popularity, release date, etc.
-                {#movieItem.innerHTML = `#}
-                {#    <h3 class="text-2xl font-bold text-white">${watchlist.title}</h3>#}
-                {#    <div class="popularity">${watchlist.popularity}</div>#}
-                {#    <div class="release">${watchlist.release_date}</div>#}
-                {#    <!-- Other movie details -->#}
-                {##}
-                {#    <button class="add-to-watchlist">Add to Watchlist</button>#}
-                {#`;#}
-
-                // Append the created elements to the watchlist section
-                watchlistSection.appendChild(movieItem);
-            });
-        } else {
-            // Display a message if the watchlist is empty
-            watchlistSection.innerHTML = '<p>No movies in the watchlist.</p>';
+                .then(response => {
+                    if (response.ok) {
+                        alert('Added to watchlist');
+                        fetchAndRefreshWatchlist(); // Оновлення watchlist на стороні клієнта після додавання
+                    } else {
+                        alert('Failed to add to watchlist');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
         }
-    }
-
-</script>
+    </script>
 
 
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const carouselContainers = document.querySelectorAll('.carousel-container');
-        carouselContainers.forEach((element) => {
-            const btnNext = element.getElementsByClassName('nextBtn')[0];
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const carouselContainers = document.querySelectorAll('.carousel-container');
+            carouselContainers.forEach((element) => {
+                const btnNext = element.getElementsByClassName('nextBtn')[0];
 
-            const scrollableElement = element.querySelector('.popular');
+                const scrollableElement = element.querySelector('.popular');
 
-            btnNext.addEventListener('click', () => {
-                scrollableElement.scrollBy({left: 1500, behavior: 'smooth'})
-            });
+                btnNext.addEventListener('click', () => {
+                    scrollableElement.scrollBy({left: 1500, behavior: 'smooth'})
+                });
 
-            const btnBack = element.getElementsByClassName('backBtn')[0];
-            btnBack.addEventListener('click', () => {
-                scrollableElement.scrollBy({left: -1500, behavior: 'smooth'})
-            });
-        })
-    });
-</script>
+                const btnBack = element.getElementsByClassName('backBtn')[0];
+                btnBack.addEventListener('click', () => {
+                    scrollableElement.scrollBy({left: -1500, behavior: 'smooth'})
+                });
+            })
+        });
+    </script>
+</div>
 </body>
 </html>
