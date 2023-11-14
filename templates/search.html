@@ -147,11 +147,11 @@
             {% if request.user.username == '' %}
 
                 <a href="{% url 'register' %}"
-                   class="bg-sky-900 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2 ml-4">
+                   class="bg-sky-900 hover:bg-sky-800 text-white font-bold py-2 px-4 border border-sky-800 rounded mr-2 ml-4">
                     Зареєструватися
                 </a>
                 <a href="{% url 'login' %}"
-                   class="bg-sky-900 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2">
+                   class="bg-sky-900 hover:bg-sky-800 text-white font-bold py-2 px-4 border border-sky-800 rounded mr-2">
                     Увійти
                 </a>
                 </div>
@@ -300,11 +300,11 @@
                 {% if request.user.username == '' %}
 
                     <a href="{% url 'register' %}"
-                       class="bg-sky-900 hover:bg-sky-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2 ml-4">
+                       class="bg-sky-900 hover:bg-sky-800 text-white font-bold py-2 px-4 border border-sky-800 rounded mr-2 ml-4">
                         Sign up
                     </a>
                     <a href="{% url 'login' %}"
-                       class="bg-sky-900 hover:bg-sky-700 text-white font-bold py-2 px-4 border border-sky-700 rounded mr-2">
+                       class="bg-sky-900 hover:bg-sky-800 text-white font-bold py-2 px-4 border border-sky-800 rounded mr-2">
                         Sign in
                     </a>
                     </div>
@@ -395,7 +395,7 @@
 
                 {% for f in films %}
 
-                    <div class="flex max-w-sm h-full w-full bg-blue-200 shadow-md rounded-lg overflow-hidden mx-auto">
+                    <div class="flex max-w-sm h-full w-full bg-sky-900 shadow-md rounded-lg overflow-hidden mx-auto">
 
                         <div class="w-full overflow-hidden rounded-xl relative transform hover:-translate-y-2 transition ease-in-out duration-500 shadow-lg hover:shadow-2xl movie-item text-white movie-card"
                              data-movie-id="438631">
