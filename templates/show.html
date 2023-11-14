@@ -44,7 +44,7 @@
                     <ul class="mr-auto flex flex-row" data-te-navbar-nav-ref>
                         <li data-te-nav-item-ref>
                             <a
-                                    class="block py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    class="block py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2 text-sky-900"
                                     href="{% url 'show' %}"
                                     data-te-ripple-init
                                     data-te-ripple-color="light"
@@ -54,7 +54,7 @@
 
                         <li class="static" data-te-nav-item-ref data-te-dropdown-ref>
                             <a
-                                    class="flex items-center whitespace-nowrap py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    class="flex items-center whitespace-nowrap py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2 text-sky-900"
                                     href="#"
                                     data-te-ripple-init
                                     data-te-ripple-color="light"
@@ -79,7 +79,7 @@
                             </a>
 
                             <div
-                                    class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block"
+                                    class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block text-sky-900"
                                     aria-labelledby="dropdownMenuButtonY"
                                     data-te-dropdown-menu-ref>
                                 <div class="px-6 py-5 lg:px-8">
@@ -198,7 +198,7 @@
                     <ul class="mr-auto flex flex-row" data-te-navbar-nav-ref>
                         <li data-te-nav-item-ref>
                             <a
-                                    class="block py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    class="block py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2 text-sky-900"
                                     href="{% url 'show' %}"
                                     data-te-ripple-init
                                     data-te-ripple-color="light"
@@ -208,7 +208,7 @@
 
                         <li class="static" data-te-nav-item-ref data-te-dropdown-ref>
                             <a
-                                    class="flex items-center whitespace-nowrap py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2"
+                                    class="flex items-center whitespace-nowrap py-2 pr-2 transition duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:px-2 text-sky-900"
                                     href="#"
                                     data-te-ripple-init
                                     data-te-ripple-color="light"
@@ -233,7 +233,7 @@
                             </a>
 
                             <div
-                                    class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block"
+                                    class="absolute left-0 right-0 top-full z-[1000] mt-0 hidden w-full border-none bg-white bg-clip-padding text-neutral-600 shadow-lg dark:bg-neutral-700 dark:text-neutral-200 [&[data-te-dropdown-show]]:block text-sky-900"
                                     aria-labelledby="dropdownMenuButtonY"
                                     data-te-dropdown-menu-ref>
                                 <div class="px-6 py-5 lg:px-8">
@@ -268,7 +268,8 @@
                                             <a
                                                     href="{% url 'show' %}#myHeading_4"
                                                     aria-current="true"
-                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white">Cartoons</a>
+                                                    class="block w-full border-b border-neutral-200 px-6 py-2 transition duration-150 ease-in-out hover:bg-neutral-50 hover:text-neutral-700 dark:border-neutral-500 dark:hover:bg-neutral-800 dark:hover:text-white"
+                                            >Cartoons</a>
                                             <a
                                                     href="{% url 'show' %}#myHeading_5"
                                                     aria-current="true"
@@ -347,10 +348,17 @@
         <form id="searchForm" action="/search/" method="get">
             <div class="mb-3"
                  style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center;">
-                <input id="searchInput" type="search"
-                       class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
-                       style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Search"
-                       aria-label="Search" aria-describedby="button-addon1"/>
+                {% if selected_language_code == 'uk-UA' %}
+                    <input id="searchInput" type="search"
+                           class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                           style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Пошук"
+                           aria-label="Search" aria-describedby="button-addon1"/>
+                {% else %}
+                    <input id="searchInput" type="search"
+                           class="rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                           style="width: 700px; height: 50px; cursor: auto; color: white;" placeholder="Search"
+                           aria-label="Search" aria-describedby="button-addon1"/>
+                {% endif %}
                 <button
                         class="bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
                         type="submit"
@@ -465,71 +473,71 @@
         </div>
     </div>
 
-{#    <script>#}
-{#        // Перевіряємо, чи є userId визначеним, якщо ні, то визначаємо його як null#}
-{#        const userId = {{ userId|default:"null" }};#}
-{##}
-{#        document.addEventListener('DOMContentLoaded', function () {#}
-{#            // Знаходимо кнопки за класом .remove-from-watchlist#}
-{#            const removeFromWatchlistButtons = document.querySelectorAll('.remove-from-watchlist');#}
-{##}
-{#            if (removeFromWatchlistButtons.length > 0) {#}
-{#                // Додаємо обробник подій для кожної кнопки#}
-{#                removeFromWatchlistButtons.forEach(button => {#}
-{#                    button.addEventListener('click', function () {#}
-{#                        const movieId = this.getAttribute('data-movie-id');#}
-{#                        removeFromWatchlist(movieId);#}
-{#                    });#}
-{#                });#}
-{#            } else {#}
-{#                console.error("Кнопки 'remove-from-watchlist' не знайдено.");#}
-{#            }#}
-{#        });#}
-{##}
-{#        function removeFromWatchlist(movieId) {#}
-{#            fetch(`/remove_from_watchlist/${movieId}`, {#}
-{#                method: 'POST',#}
-{#                headers: {#}
-{#                    'X-CSRFToken': '{{ csrf_token }}',#}
-{#                    'Content-Type': 'application/json'#}
-{#                },#}
-{#            })#}
-{#                .then(response => {#}
-{#                    if (response.ok) {#}
-{#                        alert('Видалено зі списку перегляду');#}
-{#                        // Викликаємо функцію updateWatchlistUI з переданим movieId#}
-{#                        updateWatchlistUI(movieId);#}
-{#                    } else {#}
-{#                        alert('Не вдалося видалити зі списку перегляду');#}
-{#                    }#}
-{#                })#}
-{#                .catch(error => console.error('Помилка:', error));#}
-{#        }#}
-{##}
-{#        function updateWatchlistUI(movieId) {#}
-{#            console.log("Видаляємо елемент з ID:", movieId);#}
-{##}
-{#            // Логіка пошуку та видалення елементу з DOM#}
-{#            const movieElement = document.getElementById(movieId);#}
-{#            console.log("Знайдено елемент:", movieElement);#}
-{##}
-{#            if (movieElement) {#}
-{#                console.log("Знайдено батьківський вузол:", movieElement.parentNode);#}
-{#                movieElement.parentNode.removeChild(movieElement);#}
-{#            } else {#}
-{#                console.log("Елемент фільму не знайдено!");#}
-{#            }#}
-{##}
-{#            // Необов'язково: оновлення заголовка в залежності від вмісту списку#}
-{#            const heading = document.getElementById('myHeading_watchlist');#}
-{#            if (heading) {#}
-{#                const watchlist = document.getElementsByClassName('movie-item');#}
-{#                if (watchlist.length === 0) {#}
-{#                    heading.innerText = "Немає фільмів у списку перегляду.";#}
-{#                }#}
-{#            }#}
-{#        }#}
-{#    </script>#}
+    {#    <script>#}
+    {#        // Перевіряємо, чи є userId визначеним, якщо ні, то визначаємо його як null#}
+    {#        const userId = {{ userId|default:"null" }};#}
+    {##}
+    {#        document.addEventListener('DOMContentLoaded', function () {#}
+    {#            // Знаходимо кнопки за класом .remove-from-watchlist#}
+    {#            const removeFromWatchlistButtons = document.querySelectorAll('.remove-from-watchlist');#}
+    {##}
+    {#            if (removeFromWatchlistButtons.length > 0) {#}
+    {#                // Додаємо обробник подій для кожної кнопки#}
+    {#                removeFromWatchlistButtons.forEach(button => {#}
+    {#                    button.addEventListener('click', function () {#}
+    {#                        const movieId = this.getAttribute('data-movie-id');#}
+    {#                        removeFromWatchlist(movieId);#}
+    {#                    });#}
+    {#                });#}
+    {#            } else {#}
+    {#                console.error("Кнопки 'remove-from-watchlist' не знайдено.");#}
+    {#            }#}
+    {#        });#}
+    {##}
+    {#        function removeFromWatchlist(movieId) {#}
+    {#            fetch(`/remove_from_watchlist/${movieId}`, {#}
+    {#                method: 'POST',#}
+    {#                headers: {#}
+    {#                    'X-CSRFToken': '{{ csrf_token }}',#}
+    {#                    'Content-Type': 'application/json'#}
+    {#                },#}
+    {#            })#}
+    {#                .then(response => {#}
+    {#                    if (response.ok) {#}
+    {#                        alert('Видалено зі списку перегляду');#}
+    {#                        // Викликаємо функцію updateWatchlistUI з переданим movieId#}
+    {#                        updateWatchlistUI(movieId);#}
+    {#                    } else {#}
+    {#                        alert('Не вдалося видалити зі списку перегляду');#}
+    {#                    }#}
+    {#                })#}
+    {#                .catch(error => console.error('Помилка:', error));#}
+    {#        }#}
+    {##}
+    {#        function updateWatchlistUI(movieId) {#}
+    {#            console.log("Видаляємо елемент з ID:", movieId);#}
+    {##}
+    {#            // Логіка пошуку та видалення елементу з DOM#}
+    {#            const movieElement = document.getElementById(movieId);#}
+    {#            console.log("Знайдено елемент:", movieElement);#}
+    {##}
+    {#            if (movieElement) {#}
+    {#                console.log("Знайдено батьківський вузол:", movieElement.parentNode);#}
+    {#                movieElement.parentNode.removeChild(movieElement);#}
+    {#            } else {#}
+    {#                console.log("Елемент фільму не знайдено!");#}
+    {#            }#}
+    {##}
+    {#            // Необов'язково: оновлення заголовка в залежності від вмісту списку#}
+    {#            const heading = document.getElementById('myHeading_watchlist');#}
+    {#            if (heading) {#}
+    {#                const watchlist = document.getElementsByClassName('movie-item');#}
+    {#                if (watchlist.length === 0) {#}
+    {#                    heading.innerText = "Немає фільмів у списку перегляду.";#}
+    {#                }#}
+    {#            }#}
+    {#        }#}
+    {#    </script>#}
     {#<script>#}
     {#    const userId = {{ userId|default:"null" }};#}
     {##}
